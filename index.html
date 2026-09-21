@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Digital - Pizzaria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-area">
+                <div class="logo-placeholder">🍕</div>
+                <div>
+                    <h1 id="header-title">Pizzaria Galeto</h1>
+                    <span class="status open">Aberto agora</span>
+                </div>
+            </div>
+            <button class="cart-btn-header" onclick="abrirCarrinho()">
+                🛒 <span id="cart-count-header">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- BUSCA -->
+    <div class="container search-container">
+        <input type="text" id="input-busca" placeholder="🔎 Buscar pizza ou bebida..." oninput="buscarProdutos(this.value)">
+    </div>
+
+    <!-- NAVEGAÇÃO DE CATEGORIAS -->
+    <nav class="category-nav" id="category-nav">
+        <!-- Gerado via JS -->
+    </nav>
+
+    <!-- CONTAINER DE PRODUTOS -->
+    <main class="container" id="produtos-container">
+        <!-- Gerado via JS -->
+    </main>
+
+    <!-- BARRA FIXA MOBILE -->
+    <div id="bottom-cart-bar" class="hidden" onclick="abrirCarrinho()">
+        <div class="bottom-cart-info">
+            <span id="bottom-cart-count">🛒 0 itens</span>
+            <span id="bottom-cart-total">R$ 0,00</span>
+        </div>
+        <div class="bottom-cart-text">Ver carrinho</div>
+    </div>
+
+    <!-- MODAL DE PRODUTO -->
+    <div id="modal-produto" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" onclick="fecharModal('modal-produto')">&times;</span>
+            <div class="modal-img-container">
+                <img id="modal-img" src="" alt="Produto">
+            </div>
+            <div class="modal-body">
+                <h2 id="modal-nome">Nome</h2>
+                <p id="modal-desc">Descrição</p>
+                <h3 id="modal-preco">R$ 0,00</h3>
+                
+                <div class="modal-actions">
+                    <div class="qtd-control">
+                        <button onclick="alterarQtdModal(-1)">-</button>
+                        <span id="modal-qtd">1</span>
+                        <button onclick="alterarQtdModal(1)">+</button>
+                    </div>
+                    <button class="btn-primary" onclick="adicionarAoCarrinho()">Adicionar - <span id="modal-btn-preco">R$ 0,00</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DO CARRINHO (Onde o pedido é finalizado) -->
+    <div id="modal-carrinho" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" onclick="fecharModal('modal-carrinho')">&times;</span>
+            <h2>Seu Carrinho</h2>
+            <div id="carrinho-itens"></div>
+            
+            <div class="carrinho-resumo">
+                <div class="linha-resumo total">
+                    <span>Subtotal</span>
+                    <span id="carrinho-subtotal">R$ 0,00</span>
+                </div>
+            </div>
+
+           <!-- FORMULÁRIO COMPLETO DENTRO DO CARRINHO -->
+            <form id="form-checkout" onsubmit="enviarWhatsApp(event)" style="padding: 20px;">
+                <div class="form-group">
+                    <input type="text" id="cliente-nome" placeholder="Seu nome" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="cliente-telefone" placeholder="Seu WhatsApp (Ex: 11 99999-9999)" required>
+                </div>
+                
+                <h3 style="color: var(--accent-color); font-size: 1rem; margin: 15px 0 10px; text-transform: uppercase;">📍 Endereço de Entrega</h3>
+                
+                <div class="form-group">
+                    <input type="text" id="cliente-rua" placeholder="Rua / Avenida" required>
+                </div>
+                <div class="form-group row">
+                    <input type="text" id="cliente-numero" placeholder="Número" required>
+                    <input type="text" id="cliente-bairro" placeholder="Bairro" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="cliente-complemento" placeholder="Complemento (Opcional)">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="cliente-obs" placeholder="Alguma observação? (Ex: tirar cebola)">
+                </div>
+
+                <div class="alerta-frete">
+                    🛵 <strong>Atenção:</strong> O valor da taxa de entrega será calculado pelo nosso atendente no WhatsApp!
+                </div>
+                
+                <button type="submit" class="btn-primary btn-block btn-whatsapp" id="btn-avancar-checkout">Enviar pedido pelo WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
