@@ -392,6 +392,11 @@ header {
   color: white;
   font-size: 1rem;
 }
+/* Coloca os inputs de Número e Bairro lado a lado */
+.form-group.row {
+  display: flex;
+  gap: 10px;
+}
 .btn-whatsapp {
   background-color: var(--success-color);
   color: #000;
