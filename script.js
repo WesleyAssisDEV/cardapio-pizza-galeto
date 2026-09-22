@@ -413,15 +413,29 @@ function abrirCarrinho() {
 
 function enviarWhatsApp(event) {
   event.preventDefault();
-  
+
   // Pegando todos os valores do HTML
-  const nome = document.getElementById("cliente-nome") ? document.getElementById("cliente-nome").value : "";
-  const telefone = document.getElementById("cliente-telefone") ? document.getElementById("cliente-telefone").value : "";
-  const rua = document.getElementById("cliente-rua") ? document.getElementById("cliente-rua").value : "";
-  const numero = document.getElementById("cliente-numero") ? document.getElementById("cliente-numero").value : "";
-  const bairro = document.getElementById("cliente-bairro") ? document.getElementById("cliente-bairro").value : "";
-  const comp = document.getElementById("cliente-complemento") ? document.getElementById("cliente-complemento").value : "";
-  const obs = document.getElementById("cliente-obs") ? document.getElementById("cliente-obs").value : "";
+  const nome = document.getElementById("cliente-nome")
+    ? document.getElementById("cliente-nome").value
+    : "";
+  const telefone = document.getElementById("cliente-telefone")
+    ? document.getElementById("cliente-telefone").value
+    : "";
+  const rua = document.getElementById("cliente-rua")
+    ? document.getElementById("cliente-rua").value
+    : "";
+  const numero = document.getElementById("cliente-numero")
+    ? document.getElementById("cliente-numero").value
+    : "";
+  const bairro = document.getElementById("cliente-bairro")
+    ? document.getElementById("cliente-bairro").value
+    : "";
+  const comp = document.getElementById("cliente-complemento")
+    ? document.getElementById("cliente-complemento").value
+    : "";
+  const obs = document.getElementById("cliente-obs")
+    ? document.getElementById("cliente-obs").value
+    : "";
 
   let textoPedido = `🍕 *NOVO PEDIDO DE PIZZA*\n\n`;
   textoPedido += `👤 *Cliente:* ${nome}\n`;
@@ -452,7 +466,7 @@ function enviarWhatsApp(event) {
   }
 
   textoPedido += `\nOlá! Gostaria de fechar esse pedido. Qual o valor da entrega para o meu endereço?`;
-  
+
   const url = `https://wa.me/${WHATSAPP_PIZZARIA}?text=${encodeURIComponent(textoPedido)}`;
   window.open(url, "_blank");
   fecharModal("modal-carrinho");
